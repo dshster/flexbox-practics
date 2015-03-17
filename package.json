@@ -1,0 +1,19 @@
+{
+  "name": "flexbox-practics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dshster/flexbox-practics.git"
+  },
+  "author": "dmitry shvalyov (dmitry@shvalyov.ru)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dshster/flexbox-practics/issues"
+  },
+  "homepage": "https://github.com/dshster/flexbox-practics"
+}
