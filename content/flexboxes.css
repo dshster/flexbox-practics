@@ -1,0 +1,6 @@
+.sandbox {
+    display: flex;
+}
+.sandbox .columns {
+    display: flex;
+}

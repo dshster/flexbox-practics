@@ -1,0 +1,19 @@
+<div class="view">
+	<div class="panel">
+		<div class="header">Control panel</div>
+
+		<control-panel>
+			<form class="form" ng-submit="Sandbox.appendColumn()">
+				<div class="form__item form__item--submit">
+					<button class="form__element form__button" type="submit">Добавить колонку</button>
+				</div>
+			</form>
+		</control-panel>
+	</div>
+
+	<sandbox class="sandbox">
+		<div class="columns">
+			<div ng-repeat="column in Sandbox.columns track by $index" class="column">column</div>
+		</div>
+	</sandbox>
+</div>
