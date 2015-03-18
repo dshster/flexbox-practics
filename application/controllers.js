@@ -8,10 +8,8 @@ angular.module(application)
 		'use strict';
 
 		var controller = this;
-		var element = {
-			selected: false,
-			style: {}
-		};
+
+		var default_styles = {};
 
 		controller.numerals = ['start', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'end'];
 
@@ -19,12 +17,16 @@ angular.module(application)
 			container: {
 				'flex-direction': ['row', 'row-reverse', 'column', 'column-reverse'],
 				'justify-content': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
-				'align-items': ['flex-start', 'flex-end', 'center', 'baseline', 'stretch']
+				'align-items': ['flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
+				'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse']
 			}
 		};
 
 		controller.appendElement = function() {
-			controller.elements.push(element);
+			controller.elements.push({
+				selected: false,
+				styles: default_styles
+			});
 		};
 
 		controller.resetView = function() {
@@ -32,7 +34,19 @@ angular.module(application)
 		};
 
 		controller.toggleElementSelected = function(index) {
-//			controller.elements[index].selected = index//!controller.elements[index].selected;
+			angular.forEach(controller.elements, function(element, key) {
+				if (controller.elements[index] === controller.elements[key]) {
+					controller.elements[index].selected = !!!controller.elements[index].selected;
+
+					if (true === controller.elements[index].selected) {
+						controller.selected_index = index;
+					} else {
+						delete controller.selected_index;
+					}
+				} else {
+					controller.elements[key].selected = false;
+				}
+			});
 		};
 
 		controller.elements = [];

@@ -4,17 +4,14 @@
 			<div class="header">Control panel</div>
 
 			<div class="panel__item">
-				<label class="form__item">flex-direction:
-					<select ng-model="Sandbox.containerStyles['flex-direction']" ng-options="preset for preset in Sandbox.presets.container['flex-direction']"></select>
+				<label ng-repeat="(name, styles) in Sandbox.presets.container" class="form__item">
+					<span class="form__label-caption" ng-bind="name"></span>
+					<select ng-model="Sandbox.containerStyles[name]" ng-options="preset for preset in Sandbox.presets.container[name]"></select>
 				</label>
+			</div>
 
-				<label class="form__item">justify-content:
-					<select ng-model="Sandbox.containerStyles['justify-content']" ng-options="preset for preset in Sandbox.presets.container['justify-content']"></select>
-				</label>
-
-				<label class="form__item">align-items:
-					<select ng-model="Sandbox.containerStyles['align-items']" ng-options="preset for preset in Sandbox.presets.container['align-items']"></select>
-				</label>
+			<div ng-if="(undefined !== Sandbox.selected_index)" class="panel__item">
+				{{ Sandbox.elements[Sandbox.selected_index] }}
 			</div>
 
 			<div ng-if="(Sandbox.elements.length)" class="form__item form__item--submit">
@@ -28,12 +25,11 @@
 	</div>
 
 	<sandbox class="sandbox" ng-style="Sandbox.containerStyles">
-		<div ng-repeat="i in [1, 1, 1] track by $index" ng-bind="$index"></div>
-
 		<block-section ng-if="(Sandbox.elements.length)" ng-repeat="element in Sandbox.elements track by $index"
 		         ng-style="element.style"
 		         ng-click="Sandbox.toggleElementSelected($index)"
-		         class="element">{{ Sandbox.numerals[$index] }}{{ element.selected }}</block-section>
+		         ng-class="{'element--selected': element.selected}"
+		         class="element">{{ Sandbox.numerals[$index] }}</block-section>
 
 		<button ng-if="(0 === Sandbox.elements.length)" class="form__element form__button form__button--append-first"
 		        ng-click="Sandbox.appendElement()" type="button">Добавить элемент
