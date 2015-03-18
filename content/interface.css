@@ -33,3 +33,7 @@ body {
     box-sizing: padding-box;
     background-color: #fff;
 }
+
+.sandbox .form__button--append-first {
+    margin: auto;
+}

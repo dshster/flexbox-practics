@@ -1,19 +1,22 @@
 angular.module(application)
-	.directive('controlPanel', function () {
+	.directive('sandbox', function (){
 		'use strict';
 
 		return {
 			restrict: 'AE',
 			scope: false,
 			controller: 'ControlPanelController as Sandbox'
-		}
+		};
 	})
 
-	.directive('sandbox', function () {
+	.directive('blockSection', function() {
 		'use strict';
 
 		return {
 			restrict: 'AE',
-			scope: false
-		}
+			scope: false,
+			link: function(scope, element) {
+				element.addClass('element--interactive');
+			}
+		};
 	});
