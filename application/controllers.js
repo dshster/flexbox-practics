@@ -9,8 +9,6 @@ angular.module(application)
 
 		var controller = this;
 
-		var default_styles = {};
-
 		controller.numerals = ['start', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'end'];
 
 		controller.presets = {
@@ -19,18 +17,34 @@ angular.module(application)
 				'justify-content': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
 				'align-items': ['flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
 				'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse']
+			},
+			element: {
+				'flex-basis': ['auto'],
+				'flex-grow': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+				'flex-shrink': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+				'align-self': ['flex-start', 'flex-end', 'center', 'baseline', 'stretch']
 			}
 		};
 
 		controller.appendElement = function() {
 			controller.elements.push({
 				selected: false,
-				styles: default_styles
+				style: {},
+				default: {
+					'flex-basis': 'auto',
+					'flex-grow': 0,
+					'flex-shrink': 0,
+					'align-self': 'flex-start'
+				}
 			});
 		};
 
 		controller.resetView = function() {
 			controller.elements = [];
+		};
+
+		controller.removeElement = function (index) {
+			controller.elements.splice(index,  1);
 		};
 
 		controller.toggleElementSelected = function(index) {

@@ -11,7 +11,13 @@
 			</div>
 
 			<div ng-if="(undefined !== Sandbox.selected_index)" class="panel__item">
-				{{ Sandbox.elements[Sandbox.selected_index] }}
+				<label ng-repeat="(name, styles) in Sandbox.presets.element" class="form__item">
+					<span class="form__label-caption" ng-bind="name"></span>
+					<select ng-model="Sandbox.elements[Sandbox.selected_index].style[name]" ng-options="preset for preset in Sandbox.presets.element[name]"></select>
+				</label>
+
+				<button class="form__element form__button form__button--append-first"
+				        ng-click="Sandbox.removeElement(Sandbox.selected_index)" type="button">Удалить элемент</button>
 			</div>
 
 			<div ng-if="(Sandbox.elements.length)" class="form__item form__item--submit">
