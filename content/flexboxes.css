@@ -12,7 +12,6 @@
     background-color: #3498db;
     min-width: 7%;
     min-height: 7%;
-    text-align: center;
     box-shadow: inset 0 0 1px rgba(0, 0, 0, .5);
 }
 
@@ -44,4 +43,14 @@
 
 .element--selected:before {
     background-color: rgba(255, 255, 255, .3) !important;
+}
+
+.element__counter {
+    margin: 10px 0 20px;
+    text-align: center;
+}
+.element__body {
+    text-align: left;
+    font-size: 13px;
+    line-height: 18px;
 }

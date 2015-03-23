@@ -1,7 +1,7 @@
 'use strict';
 
 var application = 'application';
-var dependences = ['ngRoute'];
+var dependences = ['ngRoute', 'ipsum'];
 
 angular.module(application, dependences)
 	.constant('PATH', {

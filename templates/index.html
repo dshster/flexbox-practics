@@ -13,10 +13,18 @@
 			<div ng-if="(undefined !== Sandbox.selected_index)" class="panel__item">
 				<label ng-repeat="(name, styles) in Sandbox.presets.element" class="form__item">
 					<span class="form__label-caption" ng-bind="name"></span>
-					<select ng-model="Sandbox.elements[Sandbox.selected_index].style[name]" ng-options="preset for preset in Sandbox.presets.element[name]"></select>
+					<select ng-model="Sandbox.elements[Sandbox.selected_index].style[name]"
+					        ng-options="preset for preset in Sandbox.presets.element[name]"></select>
 				</label>
 
-				<button class="form__element form__button form__button--append-first"
+				<label class="form__item">
+					<textarea class="form__element form__textarea" ng-model="Sandbox.elements[Sandbox.selected_index].body"></textarea>
+				</label>
+
+				<button class="form__element form__button form__button--lorem"
+				        ng-click="Sandbox.loremElementBody(Sandbox.selected_index)" type="button">lorem</button>
+
+				<button class="form__element form__button form__button--delete"
 				        ng-click="Sandbox.removeElement(Sandbox.selected_index)" type="button">Удалить элемент</button>
 			</div>
 
@@ -31,11 +39,15 @@
 	</div>
 
 	<sandbox class="sandbox" ng-style="Sandbox.containerStyles">
-		<block-section ng-if="(Sandbox.elements.length)" ng-repeat="element in Sandbox.elements track by $index"
-		         ng-style="element.style"
-		         ng-click="Sandbox.toggleElementSelected($index)"
-		         ng-class="{'element--selected': element.selected}"
-		         class="element">{{ Sandbox.numerals[$index] }}</block-section>
+		<block-section ng-if="(Sandbox.elements.length)"
+		               ng-repeat="element in Sandbox.elements track by $index"
+		               ng-style="element.style"
+		               ng-click="Sandbox.toggleElementSelected($index)"
+		               ng-class="{'element--selected': element.selected}"
+		               class="element">
+			<div class="element__counter" ng-bind="Sandbox.numerals[$index]"></div>
+			<div class="element__body" ng-bind="element.body"></div>
+		</block-section>
 
 		<button ng-if="(0 === Sandbox.elements.length)" class="form__element form__button form__button--append-first"
 		        ng-click="Sandbox.appendElement()" type="button">Добавить элемент

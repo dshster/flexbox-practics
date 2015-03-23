@@ -4,7 +4,7 @@ angular.module(application)
 
 	}])
 
-	.controller('ControlPanelController', [function() {
+	.controller('ControlPanelController', ['ipsumService', function(ipsumService) {
 		'use strict';
 
 		var controller = this;
@@ -29,13 +29,10 @@ angular.module(application)
 		controller.appendElement = function() {
 			controller.elements.push({
 				selected: false,
-				style: {},
-				default: {
+				style: {
 					'flex-basis': 'auto',
-					'flex-grow': 0,
-					'flex-shrink': 0,
-					'align-self': 'flex-start'
-				}
+					'align-self': 'stretch'
+				},
 			});
 		};
 
@@ -43,8 +40,13 @@ angular.module(application)
 			controller.elements = [];
 		};
 
-		controller.removeElement = function (index) {
+		controller.loremElementBody = function(index) {
+			controller.elements[index].body = ipsumService.words(50);
+		};
+
+		controller.removeElement = function(index) {
 			controller.elements.splice(index,  1);
+			delete controller.selected_index;
 		};
 
 		controller.toggleElementSelected = function(index) {
