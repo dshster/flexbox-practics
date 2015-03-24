@@ -1,9 +1,4 @@
 angular.module(application)
-	.controller('StepController', [function() {
-		'use strict';
-
-	}])
-
 	.controller('ControlPanelController', ['ipsumService', function(ipsumService) {
 		'use strict';
 
@@ -32,13 +27,9 @@ angular.module(application)
 			element: Object.keys(controller.presets.element)
 		};
 
-		controller.appendElement = function() {
-			controller.elements.push({
-				selected: false,
-				style: {
-					'flex-basis': 'auto'
-				}
-			});
+		controller.containerStyles = {
+			'flex-direction': 'row',
+			'justify-content': 'flex-start'
 		};
 
 		controller.resetView = function() {
@@ -46,12 +37,29 @@ angular.module(application)
 		};
 
 		controller.loremElementBody = function(index) {
-			controller.elements[index].body = ipsumService.words(50);
+			controller.elements[index].body = [ipsumService.randomFemale(), ipsumService.randomLast()].join(' ');
 		};
 
 		controller.removeElement = function(index) {
 			controller.elements.splice(index,  1);
 			delete controller.selected_index;
+		};
+
+		controller.appendElement = function() {
+			controller.elements.push({
+				selected: false,
+				style: {
+					'flex-grow': 0,
+					'flex-shrink': 0
+				}
+			});
+
+			controller.selected_index = Object.keys(controller.elements).pop();
+			angular.forEach(controller.elements, function(element, key) {
+				controller.elements[key].selected = false;
+			});
+
+			controller.elements[controller.selected_index].selected = true;
 		};
 
 		controller.toggleElementSelected = function(index) {
@@ -71,9 +79,4 @@ angular.module(application)
 		};
 
 		controller.elements = [];
-	}])
-
-	.controller('PrefaceController', [function() {
-		'use strict';
-
 	}]);

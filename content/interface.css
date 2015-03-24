@@ -56,7 +56,7 @@ body {
     resize: vertical;
     box-sizing: border-box;
     font-size: 12px;
-    min-height: 150px;
+    min-height: 100px;
 }
 
 .form__select {
