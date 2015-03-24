@@ -1,6 +1,5 @@
 .sandbox {
     display: flex;
-    height: 100%;
     overflow: auto;
 }
 
