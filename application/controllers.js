@@ -26,13 +26,18 @@ angular.module(application)
 			}
 		};
 
+		// preserve sort order
+		controller.keys = {
+			container: Object.keys(controller.presets.container),
+			element: Object.keys(controller.presets.element)
+		};
+
 		controller.appendElement = function() {
 			controller.elements.push({
 				selected: false,
 				style: {
-					'flex-basis': 'auto',
-					'align-self': 'stretch'
-				},
+					'flex-basis': 'auto'
+				}
 			});
 		};
 
@@ -52,7 +57,7 @@ angular.module(application)
 		controller.toggleElementSelected = function(index) {
 			angular.forEach(controller.elements, function(element, key) {
 				if (controller.elements[index] === controller.elements[key]) {
-					controller.elements[index].selected = !!!controller.elements[index].selected;
+					controller.elements[index].selected = !controller.elements[index].selected;
 
 					if (true === controller.elements[index].selected) {
 						controller.selected_index = index;

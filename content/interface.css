@@ -47,6 +47,27 @@ body {
     margin: 10px 0;
 }
 
+.form__item--submit {
+}
+
+.form__textarea {
+    width: 100%;
+    padding: 5px;
+    resize: vertical;
+    box-sizing: border-box;
+    font-size: 12px;
+    min-height: 150px;
+}
+
+.form__select {
+    float: right;
+}
+
+.form__button {
+    font-size: 13px;
+    padding: 5px 10px;
+}
+
 .form__label-caption {
     display: inline-block;
 }

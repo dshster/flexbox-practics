@@ -1,31 +1,32 @@
 <div class="view">
 	<div class="panel">
 		<control-panel>
-			<div class="header">Control panel</div>
-
 			<div class="panel__item">
-				<label ng-repeat="(name, styles) in Sandbox.presets.container" class="form__item">
-					<span class="form__label-caption" ng-bind="name"></span>
-					<select ng-model="Sandbox.containerStyles[name]" ng-options="preset for preset in Sandbox.presets.container[name]"></select>
+				<label ng-repeat="key in Sandbox.keys.container" class="form__item">
+					<span class="form__label-caption" ng-bind="key"></span>
+					<select class="form__select" ng-model="Sandbox.containerStyles[key]" ng-options="preset for preset in Sandbox.presets.container[key]"></select>
 				</label>
 			</div>
 
 			<div ng-if="(undefined !== Sandbox.selected_index)" class="panel__item">
-				<label ng-repeat="(name, styles) in Sandbox.presets.element" class="form__item">
-					<span class="form__label-caption" ng-bind="name"></span>
-					<select ng-model="Sandbox.elements[Sandbox.selected_index].style[name]"
-					        ng-options="preset for preset in Sandbox.presets.element[name]"></select>
+				<label ng-repeat="key in Sandbox.keys.element" class="form__item">
+					<span class="form__label-caption" ng-bind="key"></span>
+					<select class="form__select"
+					        ng-model="Sandbox.elements[Sandbox.selected_index].style[key]"
+					        ng-options="preset for preset in Sandbox.presets.element[key]"></select>
 				</label>
 
 				<label class="form__item">
 					<textarea class="form__element form__textarea" ng-model="Sandbox.elements[Sandbox.selected_index].body"></textarea>
 				</label>
 
-				<button class="form__element form__button form__button--lorem"
-				        ng-click="Sandbox.loremElementBody(Sandbox.selected_index)" type="button">lorem</button>
+				<div class="form__item">
+					<button class="form__element form__button form__button--lorem"
+					        ng-click="Sandbox.loremElementBody(Sandbox.selected_index)" type="button">lorem</button>
 
-				<button class="form__element form__button form__button--delete"
-				        ng-click="Sandbox.removeElement(Sandbox.selected_index)" type="button">Удалить элемент</button>
+					<button class="form__element form__button form__button--delete"
+					        ng-click="Sandbox.removeElement(Sandbox.selected_index)" type="button">Удалить элемент</button>
+				</div>
 			</div>
 
 			<div ng-if="(Sandbox.elements.length)" class="form__item form__item--submit">
