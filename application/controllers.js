@@ -11,7 +11,8 @@ angular.module(application)
 				'flex-direction': ['row', 'row-reverse', 'column', 'column-reverse'],
 				'justify-content': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
 				'align-items': ['flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
-				'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse']
+				'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse'],
+				'height': ['auto', '100%']
 			},
 			element: {
 				'flex-basis': ['auto'],
@@ -28,8 +29,7 @@ angular.module(application)
 		};
 
 		controller.containerStyles = {
-			'flex-direction': 'row',
-			'justify-content': 'flex-start'
+			'height': '100%'
 		};
 
 		controller.resetView = function() {
@@ -48,10 +48,7 @@ angular.module(application)
 		controller.appendElement = function() {
 			controller.elements.push({
 				selected: false,
-				style: {
-					'flex-grow': 0,
-					'flex-shrink': 0
-				}
+				style: {}
 			});
 
 			controller.selected_index = Object.keys(controller.elements).pop();
