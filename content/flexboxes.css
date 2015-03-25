@@ -44,9 +44,10 @@
     background-color: rgba(255, 255, 255, .3) !important;
 }
 
-.element__counter {
+.element__header {
     margin: 10px 0 20px;
-    text-align: center;
+    text-align: left;
+    font-weight: 600;
 }
 .element__body {
     text-align: left;

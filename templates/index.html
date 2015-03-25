@@ -17,6 +17,12 @@
 				</label>
 
 				<label class="form__item">
+					<span class="form__label-caption" ng-bind="'width'"></span>
+					<input ng-model="Sandbox.elements[Sandbox.selected_index].style['width']"
+							   class="form__element form__input" type="text">
+				</label>
+
+				<label class="form__item">
 					<textarea class="form__element form__textarea" ng-model="Sandbox.elements[Sandbox.selected_index].body"></textarea>
 				</label>
 
@@ -29,11 +35,12 @@
 				</div>
 			</div>
 
-			<div ng-if="(Sandbox.elements.length)" class="form__item form__item--submit">
-				<button ng-if="(Sandbox.numerals.length > Sandbox.elements.length)" class="form__element form__button form__button--append-first"
+			<div class="form__item form__item--submit">
+				<button class="form__element form__button form__button--append-first"
 				        ng-click="Sandbox.appendElement()" type="button">Добавить элемент</button>
 
-				<button class="form__element form__button form__button--append-first"
+				<button ng-if="(Sandbox.elements.length)"
+				        class="form__element form__button form__button--append-first"
 				        ng-click="Sandbox.resetView()" type="button">Сбросить</button>
 			</div>
 		</control-panel>
@@ -46,12 +53,8 @@
 		               ng-click="Sandbox.toggleElementSelected($index)"
 		               ng-class="{'element--selected': element.selected}"
 		               class="element">
-			<div class="element__counter" ng-bind="Sandbox.numerals[$index]"></div>
+			<div class="element__header" ng-bind="element.content"></div>
 			<div class="element__body" ng-bind="element.body"></div>
 		</block-section>
-
-		<button ng-if="(0 === Sandbox.elements.length)" class="form__element form__button form__button--append-first"
-		        ng-click="Sandbox.appendElement()" type="button">Добавить элемент
-		</button>
 	</sandbox>
 </div>

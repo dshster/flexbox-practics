@@ -4,8 +4,6 @@ angular.module(application)
 
 		var controller = this;
 
-		controller.numerals = ['start', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'end'];
-
 		controller.presets = {
 			container: {
 				'flex-direction': ['row', 'row-reverse', 'column', 'column-reverse'],
@@ -29,7 +27,7 @@ angular.module(application)
 		};
 
 		controller.containerStyles = {
-			'height': '100%'
+			'height': 'auto'
 		};
 
 		controller.resetView = function() {
@@ -37,7 +35,7 @@ angular.module(application)
 		};
 
 		controller.loremElementBody = function(index) {
-			controller.elements[index].body = [ipsumService.randomFemale(), ipsumService.randomLast()].join(' ');
+			controller.elements[index].body = ipsumService.sentences(5);
 		};
 
 		controller.removeElement = function(index) {
@@ -47,6 +45,7 @@ angular.module(application)
 
 		controller.appendElement = function() {
 			controller.elements.push({
+				content: [ipsumService.randomFemale(), ipsumService.randomLast()].join(' '),
 				selected: false,
 				style: {}
 			});
