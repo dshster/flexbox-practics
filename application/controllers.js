@@ -13,9 +13,10 @@ angular.module(application)
 				'height': ['auto', '100%']
 			},
 			element: {
-				'flex-basis': ['auto'],
+				'order': [-9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
 				'flex-grow': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
 				'flex-shrink': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+				'font-size': ['10px', '12px', '14px', '16px', '18px', '20px', '24px', '26px', '28px', '30px'],
 				'align-self': ['flex-start', 'flex-end', 'center', 'baseline', 'stretch']
 			}
 		};
@@ -47,7 +48,11 @@ angular.module(application)
 			controller.elements.push({
 				content: [ipsumService.randomFemale(), ipsumService.randomLast()].join(' '),
 				selected: false,
-				style: {}
+				style: {
+					'order': 0,
+					'flex-basis': 'auto',
+					'font-size': '12px'
+				}
 			});
 
 			controller.selected_index = Object.keys(controller.elements).pop();

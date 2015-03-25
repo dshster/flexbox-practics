@@ -17,9 +17,9 @@
 				</label>
 
 				<label class="form__item">
-					<span class="form__label-caption" ng-bind="'width'"></span>
-					<input ng-model="Sandbox.elements[Sandbox.selected_index].style['width']"
-							   class="form__element form__input" type="text">
+					<span class="form__label-caption" ng-bind="'flex-basis'"></span>
+					<input ng-model="Sandbox.elements[Sandbox.selected_index].style['flex-basis']"
+					       class="form__element form__input" type="text">
 				</label>
 
 				<label class="form__item">
@@ -53,6 +53,7 @@
 		               ng-click="Sandbox.toggleElementSelected($index)"
 		               ng-class="{'element--selected': element.selected}"
 		               class="element">
+			<div class="element__counter" ng-bind="$index + 1"></div>
 			<div class="element__header" ng-bind="element.content"></div>
 			<div class="element__body" ng-bind="element.body"></div>
 		</block-section>
